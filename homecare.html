@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Non-Medical Home Care — Compassion360</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png"  />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <!-- <style>
+    /* ── Page Hero ───────────────────────────────── */
+    .page-hero {
+      background: linear-gradient(135deg, #3D1A0A 0%, #7A3520 40%, var(--c-peach) 100%);
+      padding-block: 9rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: var(--sp-5);
+    }
+    .page-hero-heading em { font-style: italic; color: rgba(255,220,200,0.95); }
+    .page-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 60ch;
+      line-height: 1.75;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-5);
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.65); transition: color var(--t-fast); }
+    .breadcrumb a:hover { color: white; }
+    .breadcrumb-sep { color: rgba(255,255,255,0.3); }
+
+    /* ── Intro ───────────────────────────────────── */
+    .service-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-16);
+      align-items: center;
+    }
+    .service-intro-image {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--c-peach-pale), #F5CEBB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: var(--sp-3);
+      color: var(--c-peach);
+    }
+    .service-intro-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .img-placeholder-text { font-size: 0.8125rem; font-weight: 600; color: var(--c-text-soft); }
+
+    /* ── Feature List ────────────────────────────── */
+    .feature-list { display: flex; flex-direction: column; gap: var(--sp-5); margin-block: var(--sp-7); }
+    .feature-item { display: flex; gap: var(--sp-4); align-items: flex-start; }
+    .feature-check {
+      width: 28px; height: 28px;
+      background: var(--c-peach-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-peach);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .feature-text { font-size: 0.9375rem; color: var(--c-text-mid); line-height: 1.65; }
+    .feature-text strong { display: block; color: var(--c-text); font-weight: 600; margin-bottom: 2px; }
+
+    /* ── Care Types Grid ─────────────────────────── */
+    .care-types-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-5);
+    }
+    .care-type-card {
+      background: var(--c-white);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-7) var(--sp-6);
+      border: 1.5px solid var(--c-border-soft);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--t-mid) var(--ease);
+    }
+    .care-type-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #F5CEBB; }
+    .care-type-icon {
+      width: 48px; height: 48px;
+      background: var(--c-peach-pale);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-peach);
+      margin-bottom: var(--sp-4);
+    }
+    .care-type-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--c-text); margin-bottom: var(--sp-2); }
+    .care-type-desc { font-size: 0.9375rem; color: var(--c-text-mid); line-height: 1.65; }
+
+    /* ── Who It's For ────────────────────────────── */
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+    .who-card {
+      background: var(--c-white);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-7) var(--sp-6);
+      border: 1.5px solid var(--c-border-soft);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--t-mid) var(--ease);
+    }
+    .who-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #F5CEBB; }
+    .who-card-icon {
+      width: 48px; height: 48px;
+      background: var(--c-peach-pale);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-peach);
+      margin-bottom: var(--sp-4);
+    }
+    .who-card-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--c-text); margin-bottom: var(--sp-2); }
+    .who-card-desc { font-size: 0.9375rem; color: var(--c-text-mid); line-height: 1.65; }
+
+    /* ── CTA ─────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, #3D1A0A 0%, var(--c-peach) 100%);
+      padding-block: var(--sp-16);
+      text-align: center;
+    }
+    .cta-section h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 600; color: white; margin-bottom: var(--sp-5); }
+    .cta-section p { font-size: 1.0625rem; color: rgba(255,255,255,0.75); max-width: 52ch; margin: 0 auto var(--sp-8); line-height: 1.7; }
+
+    /* ── Footer ──────────────────────────────────── */
+    .footer-new { background: var(--c-text); color: rgba(255,255,255,0.65); }
+    .footer-new-inner { display: grid; grid-template-columns: 1.8fr 1.2fr 1fr 1fr; gap: var(--sp-10); padding-block: var(--sp-16); }
+    .footer-tagline { font-size: 0.9375rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin-top: var(--sp-4); max-width: 26ch; }
+    .footer-new-contact h3, .footer-new-links h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: var(--sp-5); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: var(--sp-3); margin-bottom: var(--sp-4); }
+    .footer-contact-item-icon { width: 32px; height: 32px; flex-shrink: 0; background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .footer-contact-item-text { font-size: 0.875rem; line-height: 1.55; color: rgba(255,255,255,0.55); }
+    .footer-contact-item-text strong { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 2px; }
+    .footer-new-links ul { list-style: none; display: flex; flex-direction: column; gap: var(--sp-3); }
+    .footer-new-links a { font-size: 0.9375rem; color: rgba(255,255,255,0.55); transition: color var(--t-fast); }
+    .footer-new-links a:hover { color: white; }
+    .footer-new-bottom { border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-new-bottom-inner { display: flex; justify-content: space-between; align-items: center; padding-block: var(--sp-5); font-size: 0.8125rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: var(--sp-3); }
+
+    /* ── Responsive ──────────────────────────────── */
+    @media (max-width: 1024px) {
+      .care-types-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-new-inner { grid-template-columns: 1fr 1fr; gap: var(--sp-8); }
+    }
+    @media (max-width: 768px) {
+      .service-intro { grid-template-columns: 1fr; }
+      .service-intro-image { display: none; }
+      .who-grid { grid-template-columns: 1fr; }
+      .footer-new-inner { grid-template-columns: 1fr; }
+      .footer-new-bottom-inner { flex-direction: column; text-align: center; }
+    }
+  </style> -->
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ── NAVIGATION ── -->
+  <header class="site-header scrolled" id="site-header">
+  <nav class="nav container" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">
+      <img src="logo/resized-400x100.png" alt="Compassion360" class="nav-logo-img" />
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-menu" id="navMenu" role="list">
+      <li class="nav-dropdown">
+        <div class="nav-dropdown-group">
+          <a href="index.html#about" class="nav-link">About Us</a>
+          <button class="nav-dropdown-chevron" aria-expanded="false" aria-label="Toggle About submenu">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="nav-dropdown-menu" role="list">
+          <li><a href="mission.html" class="nav-dropdown-link">Mission &amp; Vision</a></li>
+          <li><a href="why-us.html" class="nav-dropdown-link">Why Us</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <div class="nav-dropdown-group">
+          <a href="services.html" class="nav-link">Services</a>
+          <button class="nav-dropdown-chevron" aria-expanded="false" aria-label="Toggle Services submenu">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="nav-dropdown-menu" role="list">
+          <li><a href="nursing.html" class="nav-dropdown-link">Nursing Staff Referrals</a></li>
+          <li><a href="homecare.html" class="nav-dropdown-link">Non-Medical Home Care</a></li>
+        </ul>
+      </li>
+      <li><a href="careers.html" class="nav-link">Join Our Team</a></li>
+        <li><a href="contact-us.html" class="nav-link nav-cta">Reach Out</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <main id="main">
+
+    <!-- ── PAGE HERO ── -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <a href="services.html">Services</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">Non-Medical Home Care</span>
+        </nav>
+        <h1 class="page-hero-heading">
+          Non-Medical<br /><em>Home Care</em>
+        </h1>
+        <p class="page-hero-sub">
+          Compassionate, in-home support that preserves independence, dignity, and quality of life — for seniors, individuals with disabilities, and those in recovery.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="section" style="background: var(--c-white);">
+      <div class="container service-intro">
+        <div>
+          <div class="section-label">The Service</div>
+          <h2 class="section-heading">
+            Home Is Where People<br /><em>Feel Most Themselves</em>
+          </h2>
+          <p class="body-text">
+            Our non-medical home care services are designed to support that — to give the people we serve the help they need to stay home safely and comfortably, without sacrificing their independence or their sense of self.
+          </p>
+          <p class="body-text">
+            Our caregivers are not just task-completers. They're trained to see the whole person, to notice what matters, and to build genuine relationships with the individuals in their care. We choose caregivers the same way we'd want someone chosen for our own family.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Daily Living Assistance</strong>
+                Support with bathing, dressing, grooming, meal preparation, and other activities of daily living — delivered with patience and dignity.
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Companionship &amp; Engagement</strong>
+                Consistent, meaningful companionship that reduces isolation and enriches daily life.
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Respite Care for Families</strong>
+                Relief for family caregivers so they can rest and recharge while their loved one receives trusted, professional support.
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="feature-text">
+                <strong>Culturally Matched Caregivers</strong>
+                Where possible, we match clients with caregivers who share their cultural background or language for a more comfortable, trusting relationship.
+              </div>
+            </div>
+          </div>
+
+          <a href="contact-us.html" class="btn btn-primary" style="background: var(--c-peach); box-shadow: 0 4px 14px rgba(217,112,73,0.35);">Start a Conversation</a>
+        </div>
+
+        <div class="service-intro-image">
+          <!--
+            TO ADD YOUR IMAGE:
+            Replace the content below with:
+            <img src="homecare-detail.jpg" alt="Home care caregiver with client" />
+          -->
+          <img src="photos/home_care_page.jpg" alt="Home care caregiver with client" />  
+          <!-- <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="img-placeholder-text">Add your image here</span> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TYPES OF CARE ── -->
+    <!-- <section class="section" style="background: var(--c-bg);">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-label">What's Included</div>
+          <h2 class="section-heading centered">
+            Types of Care<br /><em>We Provide</em>
+          </h2>
+        </div>
+        <div class="care-types-grid" style="max-width: 860px; margin: 0 auto;">
+          <div class="care-type-card">
+            <div class="care-type-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="care-type-title">Personal Care</h3>
+            <p class="care-type-desc">Assistance with bathing, grooming, dressing, toileting, and other personal hygiene tasks — always delivered with respect for the client's privacy and dignity.</p>
+          </div>
+          <div class="care-type-card">
+            <div class="care-type-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="care-type-title">Companionship</h3>
+            <p class="care-type-desc">Meaningful conversation, shared activities, walks, and engagement that combats isolation and supports mental and emotional wellbeing.</p>
+          </div>
+          <div class="care-type-card">
+            <div class="care-type-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="care-type-title">Medication Reminders</h3>
+            <p class="care-type-desc">Non-medical reminders to take medications as scheduled, helping clients stay on track with their care plans and treatment routines.</p>
+          </div>
+          <div class="care-type-card">
+            <div class="care-type-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="care-type-title">Respite Care</h3>
+            <p class="care-type-desc">Scheduled relief for family caregivers — whether it's a few hours or a full day — so they can rest and recharge while their loved one is in safe hands.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- ── WHO IT'S FOR ── -->
+    <!-- <section class="section" style="background: var(--c-white);">
+      <div class="container">
+        <div class="section-header" style="text-align: center;">
+          <div class="section-label">Who This Serves</div>
+          <h2 class="section-heading centered">
+            Support for Those<br /><em>Who Need It Most</em>
+          </h2>
+        </div>
+        <div class="who-grid">
+          <div class="who-card">
+            <div class="who-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 11h-6M20 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="who-card-title">Seniors &amp; Older Adults</h3>
+            <p class="who-card-desc">Older adults who want to remain at home safely and independently, with the right support to make that a sustainable and comfortable choice.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="who-card-title">Those in Recovery</h3>
+            <p class="who-card-desc">Individuals recovering from surgery, illness, or a health event who need steady in-home support during the most vulnerable stage of healing.</p>
+          </div>
+          <div class="who-card">
+            <div class="who-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="who-card-title">Families &amp; Caregivers</h3>
+            <p class="who-card-desc">Family members who need a trusted partner to share the caregiving load — whether for a few hours of respite or more regular scheduled support.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    
+    
+    <!-- ── OTHER SERVICES ── -->
+    <section class="section" style="background: var(--c-white); padding-block: var(--sp-16);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: var(--sp-8);">
+          <div class="section-label">Continue Exploring</div>
+          <h2 class="section-heading centered">Explore Our Other<br /><em>Services</em></h2>
+        </div>
+        <div class="other-services-grid">
+          <a href="nursing.html" class="other-service-card">
+            <div class="other-service-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="other-service-content">
+              <h3 class="other-service-title">Nursing Staff Referrals</h3>
+              <p class="other-service-desc">Connecting healthcare facilities and families with thoroughly vetted, licensed nursing professionals — quickly, reliably, and with the right fit every time.</p>
+            </div>
+            <div class="other-service-arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── CTA ── -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to bring care home?</h2>
+        <p>Tell us about your situation and we'll help you figure out the right level of support — no commitment required.</p>
+        <a href="contact-us.html" class="btn btn-ghost">Get in Touch Today</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer-new" role="contentinfo">
+    <div class="container footer-new-inner">
+
+      <!-- Brand -->
+      <div class="footer-new-brand">
+        <a href="index.html" class="nav-logo" aria-label="Compassion360 home">
+          <img src="logo/resized-400x100.png" alt="Compassion360" class="nav-logo-img footer-logo-img" />
+        </a>
+        <p class="footer-tagline">Dignity. Access. Compassion — for every individual we serve across Montgomery County and the DC metro area.</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-new-contact">
+        <h3>Contact Us</h3>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Phone</strong>
+            (240) 360-6481
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Address</strong>
+            12410 Milestone Center Drive, Suite 600, Germantown, MD 20876
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Email</strong>
+            info@compassion360.net
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Mailing Address</strong>
+            P.O Box 113, Germantown, MD 20875
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-new-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <!-- <li><a href="index.html#who-we-serve">Who We Serve</a></li> -->
+          <li><a href="careers.html">Join the Team</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Self Help -->
+      <div class="footer-new-links">
+        <h3>Learn More</h3>
+        <ul>
+          <li><a href="mission.html">Mission &amp; Vision</a></li>
+          <li><a href="why-us.html">Why Choose Us</a></li>
+          <li><a href="nursing.html">Nursing Referrals</a></li>
+          <li><a href="homecare.html">Home Care</a></li>
+          <li><a href="index.html#who-we-serve">Who We Serve</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 Compassion360. All rights reserved.</p>
+        <!-- <p>Serving Montgomery County, Maryland &amp; surrounding areas.</p> -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
