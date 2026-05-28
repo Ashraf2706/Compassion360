@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search — Compassion360</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <style>
+    .search-hero {
+      background: linear-gradient(135deg, var(--c-blue) 0%, #0F3D5C 60%, #1A3A2E 100%);
+      padding-block: 8rem 4rem;
+      position: relative;
+      text-align: center;
+    }
+    .search-hero .container { position: relative; z-index: 1; }
+
+    .search-hero-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: white;
+      margin-bottom: var(--sp-8);
+    }
+    .search-hero-heading em {
+      font-style: italic;
+      color: var(--c-peach);
+    }
+
+    .search-bar-wrap {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem 3.5rem 1rem 1.25rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      border: none;
+      border-radius: var(--radius-lg);
+      background: white;
+      color: var(--c-text);
+      box-shadow: var(--shadow-lg);
+      outline: none;
+    }
+    .search-input::placeholder { color: var(--c-text-soft); }
+    .search-input:focus { box-shadow: 0 0 0 3px rgba(255,255,255,0.3), var(--shadow-lg); }
+
+    .search-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--c-text-soft);
+      pointer-events: none;
+    }
+
+    /* Results */
+    .search-results-section {
+      background: var(--c-bg);
+      min-height: 40vh;
+      padding-block: var(--sp-16);
+    }
+
+    .search-status {
+      font-size: 0.9375rem;
+      color: var(--c-text-soft);
+      margin-bottom: var(--sp-8);
+      text-align: center;
+    }
+    .search-status strong { color: var(--c-text); }
+
+    .results-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .result-card {
+      background: var(--c-white);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6) var(--sp-8);
+      border: 1.5px solid var(--c-border-soft);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all var(--t-mid) var(--ease);
+    }
+    .result-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--c-blue-mid);
+    }
+
+    .result-card-title {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--c-blue);
+      margin-bottom: var(--sp-2);
+      line-height: 1.2;
+    }
+
+    .result-card-desc {
+      font-size: 0.9375rem;
+      color: var(--c-text-mid);
+      line-height: 1.65;
+      margin-bottom: var(--sp-3);
+    }
+
+    .result-card-url {
+      font-size: 0.8125rem;
+      color: var(--c-green);
+      font-weight: 600;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: var(--sp-16);
+      color: var(--c-text-soft);
+    }
+    .no-results svg { margin: 0 auto var(--sp-4); opacity: 0.3; }
+    .no-results p { font-size: 1rem; }
+    .no-results strong { display: block; font-family: var(--font-display); font-size: 1.5rem; color: var(--c-text); margin-bottom: var(--sp-2); }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--sp-16);
+      color: var(--c-text-soft);
+    }
+    .empty-state svg { margin: 0 auto var(--sp-5); opacity: 0.25; }
+    .empty-state p { font-size: 1rem; line-height: 1.7; max-width: 40ch; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .result-card { padding: var(--sp-5) var(--sp-6); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ── Top Contact Bar ── -->
+  <div class="top-bar" role="complementary" aria-label="Quick contact information">
+    <div class="container top-bar-inner">
+      <div class="top-bar-items">
+        <a href="tel:+12403606481" class="top-bar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          (240) 360-6481
+        </a>
+        <span class="top-bar-divider" aria-hidden="true"></span>
+        <a href="mailto:info@compassion360.net" class="top-bar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          info@compassion360.net
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <a href="contact-us.html" class="top-bar-cta">Book a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NAVIGATION ── -->
+  <header class="site-header scrolled" id="site-header" data-always-scrolled="true">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">
+        <img src="logo/resized-400x100.png" alt="Compassion360" class="nav-logo-img" />
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li class="nav-dropdown">
+          <div class="nav-dropdown-group">
+            <a href="index.html#about" class="nav-link">About Us</a>
+            <button class="nav-dropdown-chevron" aria-expanded="false" aria-label="Toggle About submenu">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <ul class="nav-dropdown-menu" role="list">
+            <li><a href="mission.html" class="nav-dropdown-link">Mission &amp; Vision</a></li>
+            <li><a href="why-us.html" class="nav-dropdown-link">Why Us</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <div class="nav-dropdown-group">
+            <a href="services.html" class="nav-link">Services</a>
+            <button class="nav-dropdown-chevron" aria-expanded="false" aria-label="Toggle Services submenu">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <ul class="nav-dropdown-menu" role="list">
+            <li><a href="nursing.html" class="nav-dropdown-link">Nursing Staffing Service</a></li>
+            <li><a href="homecare.html" class="nav-dropdown-link">In-home Care Referral Services</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#who-we-serve" class="nav-link">Who We Serve</a></li>
+        <li><a href="careers.html" class="nav-link">Join Our Team</a></li>
+        <li><a href="contact-us.html" class="nav-link nav-cta">Reach Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── SEARCH HERO ── -->
+    <section class="search-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content: center; margin-bottom: var(--sp-5);">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span aria-current="page">Search</span>
+        </nav>
+        <h1 class="search-hero-heading">
+          Search <em>Results</em>
+          <!-- Search<br /><em>Compassion360</em> -->
+        </h1>
+        <div class="search-bar-wrap" role="search">
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search for services, careers, contact info..."
+            aria-label="Search the site"
+            autocomplete="off"
+          />
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESULTS ── -->
+    <section class="search-results-section" aria-live="polite" aria-label="Search results">
+      <div class="container">
+
+        <p class="search-status" id="searchStatus" hidden></p>
+
+        <div class="results-list" id="resultsList">
+          <!-- empty state shown on first load -->
+          <div class="empty-state" id="emptyState">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Type above to search for services, careers,<br />contact information, and more.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+ <!-- ── FOOTER ── -->
+  <footer class="footer-new" role="contentinfo">
+    <div class="container footer-new-inner">
+
+      <!-- Brand -->
+      <div class="footer-new-brand">
+        <a href="index.html" class="nav-logo" aria-label="Compassion360 home">
+          <img src="logo/resized-400x100.png" alt="Compassion360" class="nav-logo-img footer-logo-img" />
+        </a>
+        <p class="footer-tagline">Dignity. Access. Compassion — for every individual we serve across Montgomery County and the DC metro area.</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-new-contact">
+        <h3>Contact Us</h3>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Phone</strong>
+            (240) 360-6481
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Address</strong>
+            12410 Milestone Center Drive, Suite 600, Germantown, MD 20876
+          </div>
+        </div>
+
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Email</strong>
+            info@compassion360.net
+          </div>
+
+        <!-- <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Mailing Address</strong>
+            P.O Box 113, Germantown, MD 20874
+          </div> -->
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-item-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="footer-contact-item-text">
+            <strong>Mailing Address</strong>
+            P.O Box 113, Germantown, MD 20875
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-new-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <!-- <li><a href="index.html#who-we-serve">Who We Serve</a></li> -->
+          <li><a href="careers.html">Join the Team</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Self Help -->
+      <div class="footer-new-links">
+        <h3>Learn More</h3>
+        <ul>
+          <li><a href="mission.html">Mission &amp; Vision</a></li>
+          <li><a href="why-us.html">Why Choose Us</a></li>
+          <li><a href="nursing.html">Nursing Staffing Service</a></li>
+          <li><a href="homecare.html">In-home Care Referral Services</a></li>
+          <li><a href="index.html#who-we-serve">Who We Serve</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 Compassion360. All rights reserved.</p>
+        <!-- <p>Serving Montgomery County, Maryland &amp; surrounding areas.</p> -->
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Load Fuse.js from CDN, then your data, then the search logic -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+  <script src="search-data.js"></script>
+  <script src="script.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>

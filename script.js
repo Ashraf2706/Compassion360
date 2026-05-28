@@ -25,6 +25,16 @@ navToggle.addEventListener('click', () => {
   navToggle.setAttribute('aria-expanded', String(!expanded));
   navMenu.classList.toggle('open', !expanded);
   document.body.style.overflow = !expanded ? 'hidden' : '';
+
+  // force white nav background when menu is open
+  if (!expanded) {
+    header.classList.add('scrolled');
+  } else {
+    // restore based on actual scroll position when closing
+    if (window.scrollY <= 24) {
+      header.classList.remove('scrolled');
+    }
+  }
 });
 
 // Close menu on link click
@@ -340,3 +350,52 @@ if (careersForm) {
     setTimeout(() => { careersSuccess.hidden = true; }, 8000);
   });
 }
+
+// ─ Font Size Resizer ────────────────────────────────
+(function () {
+  const root        = document.documentElement;
+  const increaseBtn = document.getElementById('fontIncrease');
+  const decreaseBtn = document.getElementById('fontDecrease');
+  const resetBtn    = document.getElementById('fontReset');
+
+  // Size steps in px — default is 16
+  const sizes    = [14, 16, 18, 20, 22, 24];
+  const DEFAULT  = 16;
+  let currentSize = parseInt(localStorage.getItem('c360-font-size')) || DEFAULT;
+
+  // Apply size on load
+  applySize(currentSize);
+
+  function applySize(size) {
+    currentSize = size;
+    root.style.fontSize = size + 'px';
+    localStorage.setItem('c360-font-size', size);
+
+    // Disable buttons at limits
+    if (decreaseBtn) decreaseBtn.disabled = size <= sizes[0];
+    if (increaseBtn) increaseBtn.disabled = size >= sizes[sizes.length - 1];
+
+    // Highlight reset when not at default
+    if (resetBtn) {
+      resetBtn.classList.toggle('active', size !== DEFAULT);
+    }
+  }
+
+  if (increaseBtn) {
+    increaseBtn.addEventListener('click', () => {
+      const idx = sizes.indexOf(currentSize);
+      if (idx < sizes.length - 1) applySize(sizes[idx + 1]);
+    });
+  }
+
+  if (decreaseBtn) {
+    decreaseBtn.addEventListener('click', () => {
+      const idx = sizes.indexOf(currentSize);
+      if (idx > 0) applySize(sizes[idx - 1]);
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => applySize(DEFAULT));
+  }
+})();
