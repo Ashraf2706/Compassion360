@@ -2484,23 +2484,23 @@ input, select, textarea { font-family: inherit; }
 
 @media (max-width: 768px) {
   .top-bar-right { display: none; }
-  .top-bar-items { gap: var(--sp-1); }
-  .top-bar-item  { font-size: 0.725rem; }
+  .top-bar-items { gap: var(--sp-4); }
+  .top-bar-item  { font-size: 0.8125rem; }
 
-  .site-header {
-    top: 0;
-  }
-
-  .nav-menu {
-    top: 100%;
-  }
+  /* Hide the label on mobile — phone and email speak for themselves */
+  .top-bar-items p.top-bar-item { display: none; }
 }
 
 @media (max-width: 480px) {
-  .top-bar-divider,
-  .top-bar-items a[href^="mailto"] {
-    display: none;
+  .top-bar-divider { display: none; }
+  .top-bar-items {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--sp-3);
   }
+  .top-bar-item  { font-size: 0.75rem; }
+  .top-bar       { padding-block: var(--sp-1); }
 }
 
 
