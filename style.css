@@ -245,7 +245,7 @@ input, select, textarea { font-family: inherit; }
 /* ─ Navigation ────────────────────────────────────── */
 .site-header {
   position: fixed;
-  top: 50px;
+  /* top: 50px; */
   left: 0;
   right: 0;
   z-index: 100;
@@ -2485,12 +2485,22 @@ input, select, textarea { font-family: inherit; }
 @media (max-width: 768px) {
   .top-bar-right { display: none; }
   .top-bar-items { gap: var(--sp-1); }
-  .top-bar-item  { font-size: 0.72rem; }
+  .top-bar-item  { font-size: 0.725rem; }
+
+  .site-header {
+    top: 0;
+  }
+
+  .nav-menu {
+    top: 100%;
+  }
 }
 
 @media (max-width: 480px) {
-  .top-bar-divider { display: none; }
-  .top-bar-items   { flex-direction: column; align-items: flex-start; gap: var(--sp-1); }
+  .top-bar-divider,
+  .top-bar-items a[href^="mailto"] {
+    display: none;
+  }
 }
 
 

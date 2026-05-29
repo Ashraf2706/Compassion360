@@ -399,3 +399,14 @@ if (careersForm) {
     resetBtn.addEventListener('click', () => applySize(DEFAULT));
   }
 })();
+
+// ─ Dynamic nav position based on top bar height ────
+function adjustNavPosition() {
+  const topBar = document.querySelector('.top-bar');
+  if (!topBar || !header) return;
+  const topBarHeight = topBar.offsetHeight;
+  header.style.top = topBarHeight + 'px';
+}
+
+adjustNavPosition();
+window.addEventListener('resize', adjustNavPosition);
