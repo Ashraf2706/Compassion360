@@ -71,7 +71,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 18px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -245,7 +245,7 @@ input, select, textarea { font-family: inherit; }
 /* ─ Navigation ────────────────────────────────────── */
 .site-header {
   position: fixed;
-  top: 44px;
+  top: 50px;
   left: 0;
   right: 0;
   z-index: 100;
@@ -540,7 +540,7 @@ input, select, textarea { font-family: inherit; }
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 740px;
+  /* max-width: 740px; */
   padding-top: var(--sp-8);
 }
 
@@ -921,6 +921,14 @@ input, select, textarea { font-family: inherit; }
 .mission {
   position: relative;
   background: linear-gradient(135deg, #0F3D5C 0%, var(--c-blue) 40%, var(--c-green) 100%);
+  /* background: var(--c-bg); */
+  overflow: hidden;
+}
+
+.mission-page {
+  position: relative;
+  /* background: linear-gradient(135deg, #0F3D5C 0%, var(--c-blue) 40%, var(--c-green) 100%); */
+  background: var(--c-bg);
   overflow: hidden;
 }
 
@@ -949,13 +957,16 @@ input, select, textarea { font-family: inherit; }
 }
 
 .mission-card {
-  background: rgba(255,255,255,0.08);
+  background: var(--c-white);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: var(--radius-xl);
   padding: var(--sp-10) var(--sp-8);
   text-align: left;
-  transition: background var(--t-mid) var(--ease), transform var(--t-mid) var(--ease);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-mid) var(--ease),
+              box-shadow var(--t-mid) var(--ease),
+              border-color var(--t-mid) var(--ease);
 }
 .mission-card:hover {
   background: rgba(255,255,255,0.12);
@@ -966,12 +977,12 @@ input, select, textarea { font-family: inherit; }
 .mission-card-icon {
   width: 52px;
   height: 52px;
-  background: rgba(255,255,255,0.15);
+  background: var(--c-green-pale);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.9);
+  color: var(--c-green);
   margin-bottom: var(--sp-5);
 }
 
@@ -979,13 +990,13 @@ input, select, textarea { font-family: inherit; }
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--c-white);
+  color: var(--c-text);
   margin-bottom: var(--sp-4);
 }
 
 .mission-card-text {
   font-size: 1rem;
-  color: rgba(255,255,255,0.75);
+  color: var(--c-text-mid);
   line-height: 1.75;
 }
 
@@ -999,7 +1010,7 @@ input, select, textarea { font-family: inherit; }
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-style: italic;
-  color: rgba(255,255,255,0.9);
+  color: var(--c-text);
   line-height: 1.5;
   margin-bottom: var(--sp-4);
 }
@@ -1008,7 +1019,7 @@ input, select, textarea { font-family: inherit; }
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
-  color: rgba(255,255,255,0.55);
+  color: var(--c-text-soft);
   letter-spacing: 0.04em;
 }
 
@@ -1211,7 +1222,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ─ Footer Logo ───────────────────────────────────── */
 .footer-logo-img {
-  height: 36px;
+  height: 60px;
   filter: brightness(0) invert(1); /* makes logo white — remove this line if your logo already works on dark backgrounds */
 }
 
@@ -1339,7 +1350,7 @@ input, select, textarea { font-family: inherit; }
     /* Hero Banner */
     .services-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/services.jpg') left/cover no-repeat;
-      padding-block: 8rem 5rem;
+      padding-block: calc(9rem + 110px) 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -1710,7 +1721,7 @@ input, select, textarea { font-family: inherit; }
 /* ── Page Hero ───────────────────────────────── */
     .page-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/services.jpg') left/cover no-repeat;
-      padding-block: 9rem 5rem;
+      padding-block: calc(9rem + 90px) 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -2307,7 +2318,7 @@ input, select, textarea { font-family: inherit; }
 /* ── team Hero ───────────────────────────────── */
     .team-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/team.jpg') top/cover no-repeat;
-      padding-block: 9rem 5rem;
+      padding-block: calc(9rem + 70px) 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -2431,8 +2442,8 @@ input, select, textarea { font-family: inherit; }
   align-items: center;
   gap: var(--sp-2);
   font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 1.125rem;
+  font-weight: 900;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
   transition: color var(--t-fast) var(--ease);
@@ -2473,13 +2484,13 @@ input, select, textarea { font-family: inherit; }
 
 @media (max-width: 768px) {
   .top-bar-right { display: none; }
-  .top-bar-items { gap: var(--sp-4); }
-  .top-bar-item  { font-size: 0.8125rem; }
+  .top-bar-items { gap: var(--sp-1); }
+  .top-bar-item  { font-size: 0.72rem; }
 }
 
 @media (max-width: 480px) {
   .top-bar-divider { display: none; }
-  .top-bar-items   { flex-direction: column; align-items: flex-start; gap: var(--sp-2); }
+  .top-bar-items   { flex-direction: column; align-items: flex-start; gap: var(--sp-1); }
 }
 
 
@@ -2500,7 +2511,7 @@ input, select, textarea { font-family: inherit; }
 
 @media (max-width: 768px) {
   .site-header {
-    top: 37px;
+    top: 40px;
   }
 
   .nav {
@@ -2522,3 +2533,10 @@ input, select, textarea { font-family: inherit; }
     box-shadow: var(--shadow-sm);
   }
 }
+
+.page-hero--mission {
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/nurse-measuring-patient-blood-pressure.jpg') left/cover no-repeat;
+      padding-block: calc(9rem + 70px) 5rem;
+      position: relative;
+      overflow: hidden;
+    }

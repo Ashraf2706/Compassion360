@@ -360,7 +360,7 @@ if (careersForm) {
 
   // Size steps in px — default is 16
   const sizes    = [14, 16, 18, 20, 22, 24];
-  const DEFAULT  = 16;
+  const DEFAULT  = 18;
   let currentSize = parseInt(localStorage.getItem('c360-font-size')) || DEFAULT;
 
   // Apply size on load
