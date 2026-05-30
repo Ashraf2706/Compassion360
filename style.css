@@ -485,8 +485,8 @@ input, select, textarea { font-family: inherit; }
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 100%),
-    url('photos\\sub_hero.jpg') top / cover no-repeat;
+  background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 50%),
+    url('photos/pic_2.jpeg') top center / cover no-repeat;
   overflow: hidden;
   padding-block: calc(var(--sp-32) + 37px) var(--sp-24);
 }
@@ -1301,7 +1301,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ─ Page Hero (inner pages) ──────────────────────── */
 .page-hero {
-  background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/services.jpg') left/cover no-repeat;
+  background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left/cover no-repeat;
   padding-block: 9rem 5rem;
   position: relative;
   overflow: hidden;
@@ -1349,7 +1349,7 @@ input, select, textarea { font-family: inherit; }
 
     /* Hero Banner */
     .services-hero {
-      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/services.jpg') left/cover no-repeat;
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left/cover no-repeat;
       padding-block: calc(9rem + 110px) 5rem;
       position: relative;
       overflow: hidden;
@@ -1720,7 +1720,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ── Page Hero ───────────────────────────────── */
     .page-hero {
-      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/services.jpg') left/cover no-repeat;
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left top/cover no-repeat;
       padding-block: calc(9rem + 90px) 5rem;
       position: relative;
       overflow: hidden;
@@ -2317,7 +2317,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ── team Hero ───────────────────────────────── */
     .team-hero {
-      background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/team.jpg') top/cover no-repeat;
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_7.jpeg') top/cover no-repeat;
       padding-block: calc(9rem + 70px) 5rem;
       position: relative;
       overflow: hidden;
@@ -2545,7 +2545,15 @@ input, select, textarea { font-family: inherit; }
 }
 
 .page-hero--mission {
-      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/nurse-measuring-patient-blood-pressure.jpg') left/cover no-repeat;
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_4.jpeg') left top/cover no-repeat;
+      padding-block: calc(9rem + 70px) 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+.page-hero--contact {
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_1.jpeg')  top/cover no-repeat;
       padding-block: calc(9rem + 70px) 5rem;
       position: relative;
       overflow: hidden;
