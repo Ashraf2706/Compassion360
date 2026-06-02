@@ -177,7 +177,11 @@
         </div>
 
         <div class="contact-form-wrap">
-          <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+          <form class="contact-form" id="contactForm" name="contact" netlify netlify-honeypot="bot-field" novalidate aria-label="Contact form">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none">
+              <input name="bot-field" />
+            </p>
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">Full Name <span aria-hidden="true">*</span></label>

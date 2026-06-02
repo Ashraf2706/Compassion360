@@ -209,8 +209,11 @@
         </div>
 
         <div class="careers-form-wrap">
-          <form class="careers-form" id="careersForm" novalidate aria-label="Job application form">
-
+          <form class="careers-form" id="careersForm" name="careers" netlify netlify-honeypot="bot-field" novalidate enctype="multipart/form-data" aria-label="Careers application form">
+            <input type="hidden" name="form-name" value="careers" />
+            <p style="display:none">
+              <input name="bot-field" />
+            </p>
             <!-- Row 1: Name + Email -->
             <div class="form-row">
               <div class="form-group">

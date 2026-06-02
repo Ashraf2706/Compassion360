@@ -197,16 +197,27 @@ if (form) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
-    await new Promise(r => setTimeout(r, 1400));
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
 
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = `Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-    formSuccess.hidden = false;
-    formSuccess.focus();
-
-    setTimeout(() => { formSuccess.hidden = true; }, 6000);
+      if (response.ok) {
+        form.reset();
+        formSuccess.hidden = false;
+        formSuccess.focus();
+        setTimeout(() => { formSuccess.hidden = true; }, 6000);
+      } else {
+        alert('Something went wrong. Please email us directly at info@compassion360.net');
+      }
+    } catch {
+      alert('Could not send your message. Please check your connection and try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    }
   });
 }
 
@@ -320,35 +331,46 @@ if (careersForm) {
   });
 
   careersForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const allValid = Object.keys(cFields).map(id => validateCareersField(id)).every(Boolean);
-    if (!allValid) {
-      const first = careersForm.querySelector('.invalid');
-      if (first) first.focus();
-      return;
-    }
+  e.preventDefault();
 
-    careersSubmitBtn.disabled = true;
-    careersSubmitBtn.textContent = 'Submitting…';
+  const allValid = Object.keys(cFields).map(id => validateCareersField(id)).every(Boolean);
+  if (!allValid) {
+    const first = careersForm.querySelector('.invalid');
+    if (first) first.focus();
+    return;
+  }
 
-    await new Promise(r => setTimeout(r, 1500));
+  careersSubmitBtn.disabled = true;
+  careersSubmitBtn.textContent = 'Submitting…';
 
-    careersForm.reset();
-    document.querySelectorAll('.file-upload-zone').forEach(zone => {
-      zone.classList.remove('has-file');
-      const nameEl = zone.querySelector('.file-upload-name');
-      const ctaEl  = zone.querySelector('.file-upload-cta');
-      if (nameEl) { nameEl.hidden = true; nameEl.textContent = ''; }
-      if (ctaEl && ctaEl.dataset.original) ctaEl.textContent = ctaEl.dataset.original;
+  try {
+    const formData = new FormData(careersForm);
+    const response = await fetch('/', {
+      method: 'POST',
+      body: formData
     });
 
+    if (response.ok) {
+      careersForm.reset();
+      document.querySelectorAll('.file-upload-zone').forEach(zone => {
+        zone.classList.remove('has-file');
+        const nameEl = zone.querySelector('.file-upload-name');
+        const ctaEl  = zone.querySelector('.file-upload-cta');
+        if (nameEl) { nameEl.hidden = true; nameEl.textContent = ''; }
+      });
+      careersSuccess.hidden = false;
+      careersSuccess.focus();
+      setTimeout(() => { careersSuccess.hidden = true; }, 8000);
+    } else {
+      alert('Something went wrong. Please email your application to info@compassion360.net');
+    }
+  } catch {
+    alert('Could not submit your application. Please check your connection and try again.');
+  } finally {
     careersSubmitBtn.disabled = false;
     careersSubmitBtn.innerHTML = `Submit Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-    careersSuccess.hidden = false;
-    careersSuccess.focus();
-    setTimeout(() => { careersSuccess.hidden = true; }, 8000);
-  });
+  }
+});
 }
 
 // ─ Font Size Resizer ────────────────────────────────
