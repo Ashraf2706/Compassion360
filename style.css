@@ -1878,7 +1878,7 @@ input, select, textarea { font-family: inherit; }
       z-index: 1;
       box-shadow: 0 4px 12px rgba(27,94,139,0.3);
     }
-    .process-step:last-child .process-step-num { background: var(--c-green); box-shadow: 0 4px 12px rgba(46,125,82,0.3); }
+    /* .process-step:last-child .process-step-num { background: var(--c-green); box-shadow: 0 4px 12px rgba(46,125,82,0.3); } */
     .process-step-title {
       font-family: var(--font-display);
       font-size: 1.125rem;
