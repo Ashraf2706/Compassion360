@@ -244,12 +244,11 @@ input, select, textarea { font-family: inherit; }
 
 /* ─ Navigation ────────────────────────────────────── */
 .site-header {
-  position: fixed;
-  /* top: 50px; */
+  position: relative;
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--c-border);
   box-shadow: var(--shadow-sm);
@@ -258,6 +257,7 @@ input, select, textarea { font-family: inherit; }
               border-color var(--t-slow) var(--ease),
               box-shadow var(--t-slow) var(--ease);
 }
+
 .site-header.scrolled {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(12px);
@@ -325,6 +325,7 @@ input, select, textarea { font-family: inherit; }
   width: auto;
   display: block;
   object-fit: contain;
+  margin-block: var(--sp-2);
 }
 
 .nav-link {
@@ -488,7 +489,7 @@ input, select, textarea { font-family: inherit; }
   background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 50%),
     url('photos/pic_2.jpeg') top center / cover no-repeat;
   overflow: hidden;
-  padding-block: calc(var(--sp-32) + 37px) var(--sp-24);
+  padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
 }
 
 .hero-bg {
@@ -1302,7 +1303,7 @@ input, select, textarea { font-family: inherit; }
 /* ─ Page Hero (inner pages) ──────────────────────── */
 .page-hero {
   background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left/cover no-repeat;
-  padding-block: 9rem 5rem;
+  padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
   position: relative;
   overflow: hidden;
 }
@@ -1350,7 +1351,7 @@ input, select, textarea { font-family: inherit; }
     /* Hero Banner */
     .services-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left/cover no-repeat;
-      padding-block: calc(9rem + 110px) 5rem;
+      padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
       position: relative;
       overflow: hidden;
     }
@@ -1721,7 +1722,7 @@ input, select, textarea { font-family: inherit; }
 /* ── Page Hero ───────────────────────────────── */
     .page-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 100%), url('photos/pic_8.jpeg') left top/cover no-repeat;
-      padding-block: calc(9rem + 90px) 5rem;
+      padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
       position: relative;
       overflow: hidden;
     }
@@ -2318,7 +2319,7 @@ input, select, textarea { font-family: inherit; }
 /* ── team Hero ───────────────────────────────── */
     .team-hero {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.55) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_7.jpeg') top/cover no-repeat;
-      padding-block: calc(9rem + 70px) 5rem;
+      padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
       position: relative;
       overflow: hidden;
     }
@@ -2415,12 +2416,13 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ── Top Contact Bar ───────────────────────────────── */
+/* ── Top bar sits inside wrapper, no longer fixed on its own ── */
 .top-bar {
   background: var(--c-blue);
   padding-block: var(--sp-2);
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 102; /* sits above the fixed nav */
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .top-bar-inner {
@@ -2546,15 +2548,69 @@ input, select, textarea { font-family: inherit; }
 
 .page-hero--mission {
       background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_4.jpeg') left top/cover no-repeat;
-      padding-block: calc(9rem + 70px) 5rem;
+      padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
       position: relative;
       overflow: hidden;
     }
 
 
 .page-hero--contact {
-      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_1.jpeg')  top/cover no-repeat;
-      padding-block: calc(9rem + 70px) 5rem;
+      background: linear-gradient(135deg, rgba(15, 61, 92, 0.40) 0%, rgba(26, 58, 46, 0.50) 50%), url('photos/pic_1.jpeg')  top center/cover no-repeat;
+      padding-block: calc(var(--sp-16) + 0px) var(--sp-24);
       position: relative;
       overflow: hidden;
     }
+
+/* ── Translate Button ─────────────────────────────── */
+.translate-btn {
+  position: fixed;
+  bottom: calc(var(--sp-6) + 120px);
+  right: var(--sp-6);
+  z-index: 998;
+  background: var(--c-white);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-3) var(--sp-4);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--c-text);
+  transition: all var(--t-fast) var(--ease);
+}
+.translate-btn:hover {
+  border-color: var(--c-blue);
+  color: var(--c-blue);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .translate-btn {
+    bottom: calc(var(--sp-4) + 110px);
+    right: var(--sp-4);
+    padding: var(--sp-2) var(--sp-3);
+    font-size: 0.75rem;
+  }
+}
+
+/* ── Fixed Header Wrapper ── */
+.site-header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.site-header {
+  margin-top: 0 !important;
+  top: auto !important;
+}
+

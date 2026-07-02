@@ -424,11 +424,33 @@ if (careersForm) {
 
 // ─ Dynamic nav position based on top bar height ────
 function adjustNavPosition() {
-  const topBar = document.querySelector('.top-bar');
-  if (!topBar || !header) return;
-  const topBarHeight = topBar.offsetHeight;
-  header.style.top = topBarHeight + 'px';
+  const wrapper = document.querySelector('.site-header-wrapper');
+  if (!wrapper) return;
+  document.body.style.paddingTop = wrapper.offsetHeight + 'px';
 }
 
 adjustNavPosition();
 window.addEventListener('resize', adjustNavPosition);
+
+// ─ Spanish Translate Toggle ─────────────────────────
+const translateBtn = document.getElementById('translateBtn');
+if (translateBtn) {
+  let translated = false;
+  translateBtn.addEventListener('click', () => {
+    const bar = document.querySelector('.goog-te-banner-frame');
+    const select = document.querySelector('select.goog-te-combo');
+    if (select) {
+      if (!translated) {
+        select.value = 'es';
+        select.dispatchEvent(new Event('change'));
+        translateBtn.textContent = '🌐 English';
+        translated = true;
+      } else {
+        select.value = 'en';
+        select.dispatchEvent(new Event('change'));
+        translateBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/></svg> Español`;
+        translated = false;
+      }
+    }
+  });
+}
