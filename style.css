@@ -2633,6 +2633,7 @@ input, select, textarea { font-family: inherit; }
                 box-shadow var(--t-mid) var(--ease);
   }
   .faq-item:hover {
+    border-color: var(--c-green);
     box-shadow: var(--shadow-sm);
   }
   .faq-item.open {
