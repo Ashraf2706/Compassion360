@@ -12,7 +12,7 @@ const searchData = [
     url: "nursing.html"
   },
   {
-    title: "In-home Care Referral Services",
+    title: "Home Care Referral Services",
     description: "Compassionate in-home support that preserves independence and quality of life for seniors, individuals with disabilities, and those in recovery.",
     keywords: "home care non-medical companionship daily living assistance respite seniors disabilities recovery",
     url: "homecare.html"
